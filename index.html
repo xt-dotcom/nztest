@@ -9,11 +9,11 @@
       --bg: #f4efe7;
       --paper: #fffaf2;
       --ink: #1f2a2e;
-      --muted: #6b6b6b;
+      --muted: #6d6b66;
       --accent: #1d6f78;
       --accent2: #b8753b;
-      --line: rgba(31, 42, 46, .12);
-      --shadow: 0 20px 50px rgba(31, 42, 46, .12);
+      --line: rgba(31,42,46,.13);
+      --shadow: 0 22px 52px rgba(31,42,46,.14);
       --radius: 28px;
     }
 
@@ -26,9 +26,9 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(29,111,120,.16), transparent 32rem),
-        radial-gradient(circle at top right, rgba(184,117,59,.14), transparent 28rem),
-        var(--bg);
+        radial-gradient(circle at top left, rgba(29,111,120,.18), transparent 32rem),
+        radial-gradient(circle at top right, rgba(184,117,59,.16), transparent 28rem),
+        linear-gradient(180deg, #f6f0e8, #efe7dc);
       line-height: 1.65;
     }
 
@@ -39,14 +39,14 @@
     }
 
     .hero {
-      min-height: 76vh;
+      min-height: 78vh;
       border-radius: var(--radius);
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow);
       background:
-        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.58)),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/South%20Island%20New%20Zealand%20satellite%20image.jpg") center/cover;
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.60)),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Queenstown.%20Lake%20Wakatipu.%20%2850854629786%29.jpg") center/cover no-repeat;
       display: flex;
       align-items: flex-end;
       padding: 48px;
@@ -54,10 +54,11 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5.4rem);
+      font-size: clamp(2.3rem, 6vw, 5.4rem);
       line-height: 1;
-      margin: 0 0 12px;
-      letter-spacing: -0.05em;
+      margin: 0 0 14px;
+      letter-spacing: -0.055em;
+      max-width: 920px;
     }
 
     .hero h2 {
@@ -68,7 +69,7 @@
     }
 
     .intro {
-      background: rgba(255,250,242,.88);
+      background: rgba(255,250,242,.9);
       backdrop-filter: blur(10px);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -87,21 +88,15 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      margin: 28px 0 44px;
+      margin: 28px 0 46px;
     }
 
     .photo {
-      min-height: 430px;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-    }
-
-    .photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.14));
+      width: 100%;
+      height: 430px;
+      object-fit: cover;
+      display: block;
+      background: #ddd;
     }
 
     .content { padding: 34px; }
@@ -145,7 +140,7 @@
 
     .fact {
       background: rgba(29,111,120,.08);
-      border: 1px solid rgba(29,111,120,.13);
+      border: 1px solid rgba(29,111,120,.14);
       border-radius: 18px;
       padding: 14px 16px;
       font-size: .96rem;
@@ -183,20 +178,43 @@
       font-weight: 700;
     }
 
-    .ferry {
-      background:
-        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.62)),
-        url("https://commons.wikimedia.org/wiki/Special:FilePath/Interislander%20ferry%20in%20Marlborough%20Sounds.jpg") center/cover;
-      color: white;
-      border-radius: var(--radius);
-      padding: 44px;
-      box-shadow: var(--shadow);
-      margin: 54px 0;
+    .split-photo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
     }
 
+    .split-photo img {
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ferry {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 54px 0;
+      background: var(--ink);
+      color: white;
+    }
+
+    .ferry-visual {
+      min-height: 480px;
+      background:
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.62)),
+        url("https://commons.wikimedia.org/wiki/Special:Redirect/file/Marlborough%20Sounds%20From%20Ferry.jpg") center/cover no-repeat;
+      padding: 44px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .ferry-body { padding: 34px; }
+
     .ferry .facts .fact {
-      background: rgba(255,255,255,.16);
-      border-color: rgba(255,255,255,.22);
+      background: rgba(255,255,255,.13);
+      border-color: rgba(255,255,255,.20);
       color: white;
     }
 
@@ -216,7 +234,7 @@
     .credits {
       margin-top: 24px;
       color: var(--muted);
-      font-size: .9rem;
+      font-size: .88rem;
       font-family: Arial, sans-serif;
     }
 
@@ -226,10 +244,15 @@
     li { margin: .35rem 0; }
 
     @media (max-width: 700px) {
-      .hero { padding: 30px; min-height: 62vh; }
-      .photo { min-height: 280px; }
+      .page { padding: 14px 10px 48px; }
+      .hero { padding: 28px; min-height: 62vh; }
+      .photo { height: 285px; }
       .content { padding: 24px; }
-      .intro { margin-top: 18px; }
+      .intro { margin-top: 18px; padding: 24px; }
+      .split-photo { grid-template-columns: 1fr; }
+      .split-photo img { height: 260px; }
+      .ferry-visual { min-height: 360px; padding: 28px; }
+      .ferry-body { padding: 24px; }
     }
   </style>
 </head>
@@ -258,7 +281,7 @@
     </section>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown%20with%20Lake%20Wakatipu.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake%20Whakatipu%20from%20Queenstown.jpg" alt="Queenstown et Lake Wakatipu">
       <div class="content">
         <div class="kicker">29 octobre</div>
         <h3>Queenstown</h3>
@@ -286,7 +309,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Te%20Anau%20from%20Mt%20Luxmore.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/00%201356%20New%20Zealand%20-%20Lake%20Te%20Anau%20%28Fiordland%20National%20Park%29.jpg" alt="Lake Te Anau">
       <div class="content">
         <div class="kicker">30 octobre</div>
         <h3>Queenstown → Te Anau</h3>
@@ -317,7 +340,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Milford%20Sound%20-%20Mitre%20Peak.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/MilfordSound.jpg" alt="Milford Sound">
       <div class="content">
         <div class="kicker">31 octobre</div>
         <h3>Milford Sound</h3>
@@ -349,7 +372,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Wanaka%2C%20New%20Zealand.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Lake%20Wanaka%20-%20northern%20part%2C%20New%20Zealand.jpg" alt="Lake Wanaka">
       <div class="content">
         <div class="kicker">1 novembre</div>
         <h3>Te Anau → Wanaka</h3>
@@ -376,7 +399,10 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Rob%20Roy%20Glacier%2C%20Mount%20Aspiring%20National%20Park%2C%20New%20Zealand.jpg');"></div>
+      <div class="split-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/On%20the%20Rob%20Roy%20Glacier%20Track%2C%20Mt%20Aspiring%20NP%2C%20New%20Zealand%20-%20panoramio.jpg" alt="Rob Roy Glacier Track">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Diamond%20Lake%20near%20Wanaka.jpg" alt="Diamond Lake près de Wanaka">
+      </div>
       <div class="content">
         <div class="kicker">2 novembre</div>
         <h3>Rob Roy Glacier Track</h3>
@@ -401,7 +427,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Aoraki%20Mount%20Cook%20%2832968667%29.jpeg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Aoraki-Mount%20Cook%20from%20Tasman%20Lake.jpg" alt="Aoraki Mount Cook depuis Tasman Lake">
       <div class="content">
         <div class="kicker">3 novembre</div>
         <h3>Wanaka → Aoraki / Mount Cook</h3>
@@ -429,7 +455,10 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Hooker%20Valley%20in%20Aoraki-Mount%20Cook%20National%20Park.jpg');"></div>
+      <div class="split-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hooker%20Valley%20in%20Aoraki-Mount%20Cook%20National%20Park.jpg" alt="Hooker Valley">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tasman%20Lake%2003.jpg" alt="Tasman Lake">
+      </div>
       <div class="content">
         <div class="kicker">4 novembre</div>
         <h3>Hooker Valley Track</h3>
@@ -453,7 +482,10 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Church%20of%20the%20Good%20Shepherd%2C%20Lake%20Tekapo1.jpg');"></div>
+      <div class="split-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Church%20of%20the%20Good%20Shepherd%20%28Lake%20Tekapo%29.jpg" alt="Lake Tekapo">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Milky%20way%20galaxy%2C%20lake%20Tekapo%2C%20stargazing%20view%203.jpg" alt="Ciel étoilé à Lake Tekapo">
+      </div>
       <div class="content">
         <div class="kicker">5 novembre</div>
         <h3>Mount Cook → Lake Tekapo</h3>
@@ -490,7 +522,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Church%20of%20the%20Good%20Shepherd%2C%20Lake%20Tekapo1.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Church%20of%20the%20Good%20Shepherd%20%28Lake%20Tekapo%29.jpg" alt="Lake Tekapo">
       <div class="content">
         <div class="kicker">6 novembre</div>
         <h3>Lake Tekapo</h3>
@@ -507,7 +539,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Kaikoura%20Peninsula%2C%20New%20Zealand.jpg');"></div>
+      <img class="photo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Seaward%20Kaikoura%20Range%20%28view%20from%20Kaikoura%20Peninsula%29.jpg" alt="Kaikoura Peninsula et montagnes">
       <div class="content">
         <div class="kicker">7 novembre</div>
         <h3>Lake Tekapo → Kaikoura</h3>
@@ -535,7 +567,10 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sperm%20whale%20fluke.jpg');"></div>
+      <div class="split-photo">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sperm%20whale%20fluke.jpg" alt="Cachalot">
+        <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/View%20of%20the%20harbour%20in%20Picton%2011.jpg" alt="Port de Picton">
+      </div>
       <div class="content">
         <div class="kicker">8 novembre</div>
         <h3>Kaikoura → Picton</h3>
@@ -567,31 +602,37 @@
     </article>
 
     <section class="ferry">
-      <div class="kicker">9 novembre</div>
-      <h3>La traversée du détroit de Cook</h3>
-      <h4>Des Marlborough Sounds à l’île du Nord</h4>
-      <p>
-        Le matin du 9 novembre, nous quittons l’île du Sud pour rejoindre l’île du Nord.
-        Mais ici, le ferry n’est pas un simple moyen de transport.
-      </p>
-      <p>
-        Durant près de trois heures et demie, le navire traverse certains des plus beaux paysages maritimes de Nouvelle-Zélande.
-        La première partie du voyage serpente lentement au milieu des <strong>Marlborough Sounds</strong>,
-        un dédale spectaculaire de baies, de forêts et de collines plongeant dans l’océan.
-      </p>
-      <p>
-        Puis vient la traversée du <strong>détroit de Cook</strong>. Enfin, Wellington apparaît progressivement à l’horizon,
-        au fond de sa baie entourée de collines verdoyantes.
-      </p>
-      <div class="facts">
-        <div class="fact"><strong>Trajet</strong>Picton → Wellington</div>
-        <div class="fact"><strong>Embarquement conseillé</strong>08h00</div>
-        <div class="fact"><strong>Départ ferry</strong>09h00</div>
-        <div class="fact"><strong>Arrivée</strong>vers 12h30</div>
+      <div class="ferry-visual">
+        <div>
+          <div class="kicker">9 novembre</div>
+          <h3>La traversée du détroit de Cook</h3>
+          <h4>Des Marlborough Sounds à l’île du Nord</h4>
+        </div>
       </div>
-      <p>
-        Conseil : privilégier les ponts extérieurs pendant la traversée des Marlborough Sounds.
-      </p>
+      <div class="ferry-body">
+        <p>
+          Le matin du 9 novembre, nous quittons l’île du Sud pour rejoindre l’île du Nord.
+          Mais ici, le ferry n’est pas un simple moyen de transport.
+        </p>
+        <p>
+          Durant près de trois heures et demie, le navire traverse certains des plus beaux paysages maritimes de Nouvelle-Zélande.
+          La première partie du voyage serpente lentement au milieu des <strong>Marlborough Sounds</strong>,
+          un dédale spectaculaire de baies, de forêts et de collines plongeant dans l’océan.
+        </p>
+        <p>
+          Puis vient la traversée du <strong>détroit de Cook</strong>. Enfin, Wellington apparaît progressivement à l’horizon,
+          au fond de sa baie entourée de collines verdoyantes.
+        </p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>Picton → Wellington</div>
+          <div class="fact"><strong>Embarquement conseillé</strong>08h00</div>
+          <div class="fact"><strong>Départ ferry</strong>09h00</div>
+          <div class="fact"><strong>Arrivée</strong>vers 12h30</div>
+        </div>
+        <p>
+          Conseil : privilégier les ponts extérieurs pendant la traversée des Marlborough Sounds.
+        </p>
+      </div>
     </section>
 
     <section class="finale">
@@ -610,8 +651,8 @@
     </section>
 
     <p class="credits">
-      Photos d’illustration : Wikimedia Commons via Special:FilePath. Certaines images peuvent être soumises à attribution selon leur licence.
-      Pour un site public définitif, ajouter une page ou une section “Crédits photos” avec les liens des fichiers utilisés.
+      Photos : Wikimedia Commons. Les fichiers utilisés sont référencés via leurs noms exacts sur Commons.
+      Pour une publication définitive, prévoir une section “Crédits photos” avec auteurs et licences si le site est partagé publiquement.
     </p>
 
   </main>
