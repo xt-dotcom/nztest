@@ -19,6 +19,8 @@
 
     * { box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -43,8 +45,8 @@
       position: relative;
       box-shadow: var(--shadow);
       background:
-        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.55)),
-        url("https://source.unsplash.com/1800x1100/?new-zealand,south-island,mountains") center/cover;
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.58)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/South%20Island%20New%20Zealand%20satellite%20image.jpg") center/cover;
       display: flex;
       align-items: flex-end;
       padding: 48px;
@@ -66,7 +68,7 @@
     }
 
     .intro {
-      background: rgba(255,250,242,.82);
+      background: rgba(255,250,242,.88);
       backdrop-filter: blur(10px);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -77,14 +79,6 @@
       box-shadow: var(--shadow);
       max-width: 960px;
       font-size: 1.15rem;
-    }
-
-    .section-title {
-      margin: 58px 0 22px;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      color: var(--accent);
     }
 
     .card {
@@ -100,11 +94,17 @@
       min-height: 430px;
       background-size: cover;
       background-position: center;
+      position: relative;
     }
 
-    .content {
-      padding: 34px;
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.14));
     }
+
+    .content { padding: 34px; }
 
     .kicker {
       color: var(--accent2);
@@ -185,8 +185,8 @@
 
     .ferry {
       background:
-        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.58)),
-        url("https://source.unsplash.com/1800x1100/?cook-strait,ferry,new-zealand") center/cover;
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.62)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Interislander%20ferry%20in%20Marlborough%20Sounds.jpg") center/cover;
       color: white;
       border-radius: var(--radius);
       padding: 44px;
@@ -212,6 +212,15 @@
     }
 
     .finale h3 { color: #f7d6a8; }
+
+    .credits {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-family: Arial, sans-serif;
+    }
+
+    .credits a { color: var(--accent); }
 
     ul { padding-left: 1.2rem; }
     li { margin: .35rem 0; }
@@ -249,7 +258,7 @@
     </section>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?queenstown,lake-wakatipu,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Queenstown%20with%20Lake%20Wakatipu.jpg');"></div>
       <div class="content">
         <div class="kicker">29 octobre</div>
         <h3>Queenstown</h3>
@@ -277,7 +286,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?te-anau,lake,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Te%20Anau%20from%20Mt%20Luxmore.jpg');"></div>
       <div class="content">
         <div class="kicker">30 octobre</div>
         <h3>Queenstown → Te Anau</h3>
@@ -308,7 +317,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?milford-sound,new-zealand,fjord');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Milford%20Sound%20-%20Mitre%20Peak.jpg');"></div>
       <div class="content">
         <div class="kicker">31 octobre</div>
         <h3>Milford Sound</h3>
@@ -340,7 +349,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?wanaka,lake,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Lake%20Wanaka%2C%20New%20Zealand.jpg');"></div>
       <div class="content">
         <div class="kicker">1 novembre</div>
         <h3>Te Anau → Wanaka</h3>
@@ -367,7 +376,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?rob-roy-glacier,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Rob%20Roy%20Glacier%2C%20Mount%20Aspiring%20National%20Park%2C%20New%20Zealand.jpg');"></div>
       <div class="content">
         <div class="kicker">2 novembre</div>
         <h3>Rob Roy Glacier Track</h3>
@@ -392,7 +401,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?aoraki,mount-cook,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Aoraki%20Mount%20Cook%20%2832968667%29.jpeg');"></div>
       <div class="content">
         <div class="kicker">3 novembre</div>
         <h3>Wanaka → Aoraki / Mount Cook</h3>
@@ -420,7 +429,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?hooker-valley-track,mount-cook');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Hooker%20Valley%20in%20Aoraki-Mount%20Cook%20National%20Park.jpg');"></div>
       <div class="content">
         <div class="kicker">4 novembre</div>
         <h3>Hooker Valley Track</h3>
@@ -444,7 +453,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?lake-tekapo,new-zealand');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Church%20of%20the%20Good%20Shepherd%2C%20Lake%20Tekapo1.jpg');"></div>
       <div class="content">
         <div class="kicker">5 novembre</div>
         <h3>Mount Cook → Lake Tekapo</h3>
@@ -481,7 +490,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?lake-tekapo,sunrise');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Church%20of%20the%20Good%20Shepherd%2C%20Lake%20Tekapo1.jpg');"></div>
       <div class="content">
         <div class="kicker">6 novembre</div>
         <h3>Lake Tekapo</h3>
@@ -498,7 +507,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?kaikoura,new-zealand,coast');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Kaikoura%20Peninsula%2C%20New%20Zealand.jpg');"></div>
       <div class="content">
         <div class="kicker">7 novembre</div>
         <h3>Lake Tekapo → Kaikoura</h3>
@@ -526,7 +535,7 @@
     </article>
 
     <article class="card">
-      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?whale-watching,kaikoura');"></div>
+      <div class="photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/Sperm%20whale%20fluke.jpg');"></div>
       <div class="content">
         <div class="kicker">8 novembre</div>
         <h3>Kaikoura → Picton</h3>
@@ -599,6 +608,11 @@
         fjords, glaciers, lacs alpins, vallées sauvages, montagnes enneigées et côte Pacifique.
       </p>
     </section>
+
+    <p class="credits">
+      Photos d’illustration : Wikimedia Commons via Special:FilePath. Certaines images peuvent être soumises à attribution selon leur licence.
+      Pour un site public définitif, ajouter une page ou une section “Crédits photos” avec les liens des fichiers utilisés.
+    </p>
 
   </main>
 </body>
