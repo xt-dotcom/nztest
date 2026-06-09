@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partie 3 : Nouvelle-Zélande – Île du Sud</title>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --paper: #fffaf2;
+      --ink: #1f2a2e;
+      --muted: #6b6b6b;
+      --accent: #1d6f78;
+      --accent2: #b8753b;
+      --line: rgba(31, 42, 46, .12);
+      --shadow: 0 20px 50px rgba(31, 42, 46, .12);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(29,111,120,.16), transparent 32rem),
+        radial-gradient(circle at top right, rgba(184,117,59,.14), transparent 28rem),
+        var(--bg);
+      line-height: 1.65;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 28px 18px 80px;
+    }
+
+    .hero {
+      min-height: 76vh;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(rgba(0,0,0,.22), rgba(0,0,0,.55)),
+        url("https://source.unsplash.com/1800x1100/?new-zealand,south-island,mountains") center/cover;
+      display: flex;
+      align-items: flex-end;
+      padding: 48px;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 5.4rem);
+      line-height: 1;
+      margin: 0 0 12px;
+      letter-spacing: -0.05em;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.15rem, 2.3vw, 2rem);
+      font-weight: 400;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    .intro {
+      background: rgba(255,250,242,.82);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      margin: -34px auto 42px;
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      max-width: 960px;
+      font-size: 1.15rem;
+    }
+
+    .section-title {
+      margin: 58px 0 22px;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--accent);
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 28px 0 44px;
+    }
+
+    .photo {
+      min-height: 430px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .content {
+      padding: 34px;
+    }
+
+    .kicker {
+      color: var(--accent2);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: .78rem;
+      font-weight: 700;
+      font-family: Arial, sans-serif;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      font-size: clamp(1.8rem, 3.2vw, 3rem);
+      line-height: 1.08;
+      margin: 0 0 10px;
+      letter-spacing: -0.04em;
+    }
+
+    h4 {
+      font-size: 1.35rem;
+      margin: 28px 0 8px;
+      color: var(--accent);
+    }
+
+    .hotel {
+      color: var(--muted);
+      font-style: italic;
+      margin-bottom: 18px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .fact {
+      background: rgba(29,111,120,.08);
+      border: 1px solid rgba(29,111,120,.13);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-size: .96rem;
+    }
+
+    .fact strong {
+      display: block;
+      color: var(--accent);
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 2px;
+    }
+
+    .activity {
+      border-left: 4px solid var(--accent2);
+      padding-left: 18px;
+      margin-top: 24px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+      font-family: Arial, sans-serif;
+    }
+
+    .badge {
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(184,117,59,.12);
+      color: #714118;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .ferry {
+      background:
+        linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,.58)),
+        url("https://source.unsplash.com/1800x1100/?cook-strait,ferry,new-zealand") center/cover;
+      color: white;
+      border-radius: var(--radius);
+      padding: 44px;
+      box-shadow: var(--shadow);
+      margin: 54px 0;
+    }
+
+    .ferry .facts .fact {
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.22);
+      color: white;
+    }
+
+    .ferry .fact strong { color: #f7d6a8; }
+
+    .finale {
+      background: var(--ink);
+      color: white;
+      border-radius: var(--radius);
+      padding: 38px;
+      box-shadow: var(--shadow);
+      margin-top: 54px;
+    }
+
+    .finale h3 { color: #f7d6a8; }
+
+    ul { padding-left: 1.2rem; }
+    li { margin: .35rem 0; }
+
+    @media (max-width: 700px) {
+      .hero { padding: 30px; min-height: 62vh; }
+      .photo { min-height: 280px; }
+      .content { padding: 24px; }
+      .intro { margin-top: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <section class="hero">
+      <div>
+        <h1>Partie 3 : Nouvelle-Zélande – Île du Sud 🇳🇿</h1>
+        <h2>Des fjords du Fiordland aux Marlborough Sounds</h2>
+      </div>
+    </section>
+
+    <section class="intro">
+      <p>
+        Cette première partie néo-zélandaise nous fait traverser l’île du Sud du sud vers le nord.
+        L’itinéraire débute à <strong>Queenstown</strong>, au cœur des Alpes du Sud, puis rejoint les fjords sauvages du
+        <strong>Fiordland</strong>, les paysages alpins de <strong>Wanaka</strong>, les glaciers d’<strong>Aoraki / Mount Cook</strong>,
+        les eaux turquoise de <strong>Lake Tekapo</strong>, la côte spectaculaire de <strong>Kaikoura</strong> et enfin
+        <strong>Picton</strong>, porte d’entrée des Marlborough Sounds.
+      </p>
+      <p>
+        C’est la partie la plus montagneuse, la plus sauvage et la plus spectaculaire du voyage.
+      </p>
+    </section>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?queenstown,lake-wakatipu,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">29 octobre</div>
+        <h3>Queenstown</h3>
+        <p class="hotel">Hôtel : The Rees Hotel – 1 nuit</p>
+        <p>
+          Après plusieurs semaines dans le Pacifique puis en Australie, l’avion descend entre les sommets enneigés des Alpes du Sud.
+          Le lac Wakatipu apparaît sous l’aile de l’appareil : nous sommes enfin en Nouvelle-Zélande.
+        </p>
+        <div class="activity">
+          <h4>Après-midi – 15h30 à 18h00</h4>
+          <ul>
+            <li>Installation à l’hôtel</li>
+            <li>Promenade sur les quais du lac Wakatipu</li>
+            <li>Jardin botanique</li>
+            <li>Centre-ville</li>
+            <li>Skyline Gondola si la météo est belle</li>
+          </ul>
+        </div>
+        <div class="badges">
+          <span class="badge">Durée : 2h30 à 3h</span>
+          <span class="badge">Guide : non</span>
+          <span class="badge">Privatif : non nécessaire</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?te-anau,lake,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">30 octobre</div>
+        <h3>Queenstown → Te Anau</h3>
+        <p class="hotel">Hôtel : Radfords on the Lake – 2 nuits</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>172 km</div>
+          <div class="fact"><strong>Route</strong>environ 2h15</div>
+          <div class="fact"><strong>Départ conseillé</strong>09h30</div>
+          <div class="fact"><strong>Arrivée prévue</strong>11h45</div>
+        </div>
+        <p>
+          La route vers Te Anau marque l’entrée dans un autre monde : des paysages plus vastes, plus silencieux,
+          et la sensation d’approcher l’une des grandes régions sauvages du pays.
+        </p>
+        <div class="activity">
+          <h4>Après-midi – Te Anau Glowworm Caves</h4>
+          <p>
+            Croisière sur le lac puis visite guidée des grottes aux vers luisants.
+            Une activité parfaite après la route depuis Queenstown.
+          </p>
+        </div>
+        <div class="badges">
+          <span class="badge">14h00 – 16h30</span>
+          <span class="badge">Guide : OUI</span>
+          <span class="badge">Get Your Guide : OUI</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?milford-sound,new-zealand,fjord');"></div>
+      <div class="content">
+        <div class="kicker">31 octobre</div>
+        <h3>Milford Sound</h3>
+        <p class="hotel">Départ depuis Te Anau</p>
+        <p>
+          C’est l’une des grandes journées du voyage : un fjord profond, encaissé entre des parois verticales,
+          où les cascades tombent directement dans la mer.
+        </p>
+        <div class="facts">
+          <div class="fact"><strong>Départ</strong>07h00</div>
+          <div class="fact"><strong>Retour</strong>vers 17h30</div>
+          <div class="fact"><strong>Durée</strong>journée complète</div>
+        </div>
+        <div class="activity">
+          <h4>Journée guidée Te Anau → Milford Sound</h4>
+          <ul>
+            <li>Route panoramique commentée</li>
+            <li>Arrêts photos</li>
+            <li>Croisière dans le fjord</li>
+            <li>Retour à Te Anau avant 18h</li>
+          </ul>
+        </div>
+        <div class="badges">
+          <span class="badge">Guide : OUI</span>
+          <span class="badge">Privatif : optionnel</span>
+          <span class="badge">Get Your Guide : OUI</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?wanaka,lake,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">1 novembre</div>
+        <h3>Te Anau → Wanaka</h3>
+        <p class="hotel">Hôtel : Moorings Motel – 2 nuits</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>227 km</div>
+          <div class="fact"><strong>Route</strong>environ 3h20</div>
+          <div class="fact"><strong>Départ conseillé</strong>09h00</div>
+          <div class="fact"><strong>Arrivée prévue</strong>12h30</div>
+        </div>
+        <p>
+          Wanaka est une étape plus calme et plus intime que Queenstown, posée au bord d’un immense lac entouré de montagnes.
+        </p>
+        <div class="activity">
+          <h4>Après-midi – Diamond Lake Walk</h4>
+          <p>Belle randonnée panoramique pour prendre de la hauteur sans engager une journée trop lourde après la route.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">14h00 – 17h00</span>
+          <span class="badge">6 à 8 km</span>
+          <span class="badge">Guide : non</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?rob-roy-glacier,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">2 novembre</div>
+        <h3>Rob Roy Glacier Track</h3>
+        <p class="hotel">Wanaka</p>
+        <p>
+          Une des plus belles randonnées de l’île du Sud : forêt, torrents, cascades, vallée glaciaire et glaciers suspendus.
+          Une vraie journée de montagne, sans passage aérien étroit avec vide immédiat.
+        </p>
+        <div class="facts">
+          <div class="fact"><strong>Départ hôtel</strong>08h00</div>
+          <div class="fact"><strong>Début randonnée</strong>09h00</div>
+          <div class="fact"><strong>Durée</strong>4 à 5h</div>
+          <div class="fact"><strong>Retour Wanaka</strong>vers 15h00</div>
+        </div>
+        <div class="badges">
+          <span class="badge">10 km</span>
+          <span class="badge">Guide : OUI recommandé</span>
+          <span class="badge">Formule : PRIVATIVE</span>
+          <span class="badge">Get Your Guide : OUI</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?aoraki,mount-cook,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">3 novembre</div>
+        <h3>Wanaka → Aoraki / Mount Cook</h3>
+        <p class="hotel">Hôtel : Aoraki Court Motel – 2 nuits</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>203 km</div>
+          <div class="fact"><strong>Route</strong>environ 2h45</div>
+          <div class="fact"><strong>Départ conseillé</strong>09h00</div>
+          <div class="fact"><strong>Arrivée prévue</strong>12h00</div>
+        </div>
+        <p>
+          La route vers Aoraki / Mount Cook est l’un des grands moments visuels du voyage :
+          lacs glaciaires, sommets, vallées minérales et ambiance de haute montagne.
+        </p>
+        <div class="activity">
+          <h4>Après-midi – Tasman Glacier View Track</h4>
+          <p>Une randonnée courte mais spectaculaire vers le lac Tasman et les paysages du plus grand glacier du pays.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">14h00 – 16h00</span>
+          <span class="badge">1h30 à 2h</span>
+          <span class="badge">Guide : non</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?hooker-valley-track,mount-cook');"></div>
+      <div class="content">
+        <div class="kicker">4 novembre</div>
+        <h3>Hooker Valley Track</h3>
+        <p class="hotel">Aoraki / Mount Cook</p>
+        <p>
+          La randonnée emblématique de Nouvelle-Zélande : une vallée glaciaire spectaculaire,
+          des ponts suspendus larges et sécurisés, puis le lac Hooker dominé par la face majestueuse du Mont Cook.
+        </p>
+        <div class="facts">
+          <div class="fact"><strong>Départ</strong>08h30</div>
+          <div class="fact"><strong>Randonnée</strong>08h45 – 12h45</div>
+          <div class="fact"><strong>Distance</strong>environ 10 km</div>
+          <div class="fact"><strong>Durée</strong>3h30 à 4h</div>
+        </div>
+        <div class="badges">
+          <span class="badge">Guide : non</span>
+          <span class="badge">Get Your Guide : disponible, non nécessaire</span>
+          <span class="badge">Retour avant 18h : oui</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?lake-tekapo,new-zealand');"></div>
+      <div class="content">
+        <div class="kicker">5 novembre</div>
+        <h3>Mount Cook → Lake Tekapo</h3>
+        <p class="hotel">Hôtel : The Mackenzie Suites – 2 nuits</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>105 km</div>
+          <div class="fact"><strong>Route</strong>environ 1h20</div>
+          <div class="fact"><strong>Départ conseillé</strong>09h30</div>
+          <div class="fact"><strong>Arrivée prévue</strong>11h00</div>
+        </div>
+        <p>
+          Lake Tekapo offre une rupture magnifique après les glaciers : un lac turquoise presque irréel,
+          des montagnes en arrière-plan et une lumière très particulière.
+        </p>
+        <div class="activity">
+          <h4>Après-midi – Mount John Walkway</h4>
+          <p>Randonnée panoramique au-dessus du lac et du bassin du Mackenzie.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">14h00 – 17h00</span>
+          <span class="badge">Durée : 3h</span>
+          <span class="badge">Guide : non</span>
+        </div>
+        <div class="activity">
+          <h4>Soirée – Observation des étoiles</h4>
+          <p>Tekapo est l’un des meilleurs endroits au monde pour observer le ciel austral.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">Guide : OUI</span>
+          <span class="badge">Privatif : possible</span>
+          <span class="badge">Réservation recommandée</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?lake-tekapo,sunrise');"></div>
+      <div class="content">
+        <div class="kicker">6 novembre</div>
+        <h3>Lake Tekapo</h3>
+        <p class="hotel">Journée libre</p>
+        <p>
+          Une respiration utile au milieu du voyage : balades autour du lac, Church of the Good Shepherd,
+          déjeuner tranquille, repos ou deuxième tentative d’observation des étoiles si la météo de la veille est mauvaise.
+        </p>
+        <div class="badges">
+          <span class="badge">Guide : non</span>
+          <span class="badge">Journée légère</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?kaikoura,new-zealand,coast');"></div>
+      <div class="content">
+        <div class="kicker">7 novembre</div>
+        <h3>Lake Tekapo → Kaikoura</h3>
+        <p class="hotel">Hôtel : The Pier Hotel – 1 nuit</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>395 km</div>
+          <div class="fact"><strong>Route</strong>environ 5h15</div>
+          <div class="fact"><strong>Départ conseillé</strong>08h30</div>
+          <div class="fact"><strong>Arrivée prévue</strong>15h00</div>
+        </div>
+        <p>
+          C’est la plus longue étape routière de l’île du Sud. On quitte les lacs turquoise et les paysages alpins
+          pour rejoindre la côte Pacifique.
+        </p>
+        <div class="activity">
+          <h4>Fin d’après-midi – Kaikoura Peninsula Walkway</h4>
+          <p>Phoques, falaises, océan et montagnes composent un décor très différent du reste de l’île du Sud.</p>
+        </div>
+        <div class="badges">
+          <span class="badge">16h00 – 17h30</span>
+          <span class="badge">1h30 à 2h</span>
+          <span class="badge">Guide : non</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="photo" style="background-image:url('https://source.unsplash.com/1800x1000/?whale-watching,kaikoura');"></div>
+      <div class="content">
+        <div class="kicker">8 novembre</div>
+        <h3>Kaikoura → Picton</h3>
+        <p class="hotel">Hôtel : Beachcomber Inn – 1 nuit</p>
+        <div class="facts">
+          <div class="fact"><strong>Trajet</strong>157 km</div>
+          <div class="fact"><strong>Route</strong>environ 2h00</div>
+          <div class="fact"><strong>Départ Kaikoura</strong>12h00</div>
+          <div class="fact"><strong>Arrivée Picton</strong>14h00</div>
+        </div>
+        <div class="activity">
+          <h4>Matin – Whale Watching</h4>
+          <p>
+            Kaikoura est l’un des meilleurs endroits au monde pour observer les cachalots,
+            grâce aux eaux profondes très proches de la côte.
+          </p>
+        </div>
+        <div class="badges">
+          <span class="badge">08h00 – 11h00</span>
+          <span class="badge">Guide : OUI</span>
+          <span class="badge">Get Your Guide : OUI</span>
+          <span class="badge">Réservation indispensable</span>
+        </div>
+        <div class="activity">
+          <h4>Après-midi – Picton</h4>
+          <p>Petite promenade sur le port, dîner tranquille et préparation de la traversée du lendemain.</p>
+        </div>
+      </div>
+    </article>
+
+    <section class="ferry">
+      <div class="kicker">9 novembre</div>
+      <h3>La traversée du détroit de Cook</h3>
+      <h4>Des Marlborough Sounds à l’île du Nord</h4>
+      <p>
+        Le matin du 9 novembre, nous quittons l’île du Sud pour rejoindre l’île du Nord.
+        Mais ici, le ferry n’est pas un simple moyen de transport.
+      </p>
+      <p>
+        Durant près de trois heures et demie, le navire traverse certains des plus beaux paysages maritimes de Nouvelle-Zélande.
+        La première partie du voyage serpente lentement au milieu des <strong>Marlborough Sounds</strong>,
+        un dédale spectaculaire de baies, de forêts et de collines plongeant dans l’océan.
+      </p>
+      <p>
+        Puis vient la traversée du <strong>détroit de Cook</strong>. Enfin, Wellington apparaît progressivement à l’horizon,
+        au fond de sa baie entourée de collines verdoyantes.
+      </p>
+      <div class="facts">
+        <div class="fact"><strong>Trajet</strong>Picton → Wellington</div>
+        <div class="fact"><strong>Embarquement conseillé</strong>08h00</div>
+        <div class="fact"><strong>Départ ferry</strong>09h00</div>
+        <div class="fact"><strong>Arrivée</strong>vers 12h30</div>
+      </div>
+      <p>
+        Conseil : privilégier les ponts extérieurs pendant la traversée des Marlborough Sounds.
+      </p>
+    </section>
+
+    <section class="finale">
+      <h3>Les grands moments de l’île du Sud</h3>
+      <ul>
+        <li><strong>Milford Sound</strong>, fjord mythique du Fiordland</li>
+        <li><strong>Rob Roy Glacier</strong>, randonnée alpine privative depuis Wanaka</li>
+        <li><strong>Hooker Valley Track</strong>, face au Mont Cook</li>
+        <li><strong>Lake Tekapo</strong>, entre eau turquoise et ciel étoilé</li>
+        <li><strong>Kaikoura</strong>, rencontre entre les montagnes et l’océan</li>
+      </ul>
+      <p>
+        Cette première partie de la Nouvelle-Zélande concentre les paysages les plus spectaculaires du voyage :
+        fjords, glaciers, lacs alpins, vallées sauvages, montagnes enneigées et côte Pacifique.
+      </p>
+    </section>
+
+  </main>
+</body>
+</html>
